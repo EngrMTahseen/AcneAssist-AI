@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nearby Hospitals</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .hospital-card {
+            background: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .hospital-card h2 {
+            margin: 0;
+            color: #008080;
+        }
+        .hospital-card p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Nearby Hospitals</h1>
+        <div id="location-info"></div>
+        <div id="hospitals-list">
+            {% if hospitals %}
+                {% for hospital in hospitals %}
+                <div class="hospital-card">
+                    <h2>{{ hospital.name }}</h2>
+                    <p><strong>Address:</strong> {{ hospital.address }}</p>
+                    <p><strong>Latitude:</strong> {{ hospital.lat }}</p>
+                    <p><strong>Longitude:</strong> {{ hospital.lng }}</p>
+                </div>
+                {% endfor %}
+            {% else %}
+<!--                <p>No hospitals found or error retrieving data.</p>-->
+            {% endif %}
+        </div>
+    </div>
+
+    <script>
+        function sendLocationToServer(lat, lng) {
+            fetch(`/nearby_hospitals?lat=${lat}&lng=${lng}`)
+                .then(response => response.text())
+                .then(data => {
+                    document.body.innerHTML = data;
+                });
+        }
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(position => {
+                    const lat = position.coords.latitude;
+                    const lng = position.coords.longitude;
+
+                    // Display current location
+                    document.getElementById('location-info').innerHTML = `
+                        <h2>Your Location</h2>
+                        <p><strong>Latitude:</strong> ${lat}</p>
+                        <p><strong>Longitude:</strong> ${lng}</p>
+                    `;
+
+                    // Send location to server
+                    sendLocationToServer(lat, lng);
+                }, () => {
+                    document.getElementById('location-info').innerHTML = `
+                        <p>Unable to retrieve your location.</p>
+                    `;
+                });
+            } else {
+                document.getElementById('location-info').innerHTML = `
+                    <p>Geolocation is not supported by this browser.</p>
+                `;
+            }
+        }
+
+        // Get user's location when the page loads
+        window.onload = getLocation;
+    </script>
+</body>
+</html>

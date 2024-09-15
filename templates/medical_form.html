@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/medical_form.css') }}">
+</head>
+<body>
+    <div class="container">
+        <form class="form" id="medical-form" method="POST" action="/submit">
+            <h2>Medical Registration</h2>
+            <div class="input-group">
+                <div class="input-box">
+                    <input type="text" name="full_name" placeholder="Full Name" required>
+                </div>
+                <div class="input-box">
+                    <input type="date" name="dob" placeholder="Date of Birth" required>
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="input-box">
+                    <input type="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="input-box">
+                    <input type="text" name="phone" placeholder="Phone Number" required>
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="input-box">
+                    <input type="text" name="address" placeholder="Address" required>
+                </div>
+                <div class="input-box">
+                    <input type="text" name="city" placeholder="City" required>
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="input-box">
+                    <input type="text" name="state" placeholder="State" required>
+                </div>
+                <div class="input-box">
+                    <input type="text" name="postal_code" placeholder="Postal Code" required>
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="input-box">
+                    <input type="text" name="blood_group" placeholder="Blood group" required>
+                </div>
+                <div class="input-box">
+                    <input type="text" name="blood_pressure" placeholder="Blood Pressure L/H" required>
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="input-box">
+                    <input type="text" name="insurance_provider" placeholder="Insurance Provider" required>
+                </div>
+                <div class="input-box">
+                    <input type="text" name="insurance_policy_number" placeholder="Insurance Policy Number" required>
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="input-box">
+                    <textarea name="medical_history" placeholder="Medical History" required></textarea>
+                </div>
+            </div>
+            <div class="gender-group">
+                <h3>Gender</h3>
+                <div class="gender-input">
+                    <input type="radio" id="male" name="gender" value="Male" required>
+                    <label for="male">Male</label>
+                </div>
+                <div class="gender-input">
+                    <input type="radio" id="female" name="gender" value="Female" required>
+                    <label for="female">Female</label>
+                </div>
+                <div class="gender-input">
+                    <input type="radio" id="other" name="gender" value="Prefer not to say" required>
+                    <label for="other">Prefer not to say</label>
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="input-box">
+                    <button type="submit">Register</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

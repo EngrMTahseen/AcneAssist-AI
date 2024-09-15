@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload and Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+</head>
+<body>
+    <h1>Upload Image for Detection</h1>
+    <form action="/home" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" id="fileInput" onchange="previewImage()">
+        <button type="submit">Results</button>
+    </form>
+
+    <div class="container">
+        <div class="image-container">
+            <h2>Uploaded Image</h2>
+            {% if uploaded_image %}
+            <img id="uploadedImage" src="{{ url_for('static', filename='uploads/' + uploaded_image) }}" alt="Uploaded Image">
+            {% else %}
+            <img id="uploadedImage" src="" alt="Uploaded Image" style="display: none;">
+            {% endif %}
+        </div>
+        <div class="image-container">
+            <h2>Result Image</h2>
+            {% if result_image %}
+            <img id="resultImage" src="{{ url_for('static', filename='results/' + result_image) }}" alt="Result Image">
+            {% else %}
+            <img id="resultImage" src="" alt="Result Image" style="display: none;">
+            {% endif %}
+        </div>
+    </div>
+
+    {% if class_counts %}
+    <div class="class-counts">
+        <h2>Detection Results</h2>
+        <ul>
+            {% for class_name, count in class_counts.items() %}
+            <li>{{ class_name }}: {{ count }}</li>
+            {% endfor %}
+        </ul>
+
+        <!-- Section to display acne severity and recommendations -->
+        <div id="acne-severity">
+            <h3>Acne Severity: <span id="severity-result"></span></h3>
+            <div id="recommendations"></div>
+        </div>
+    </div>
+    {% endif %}
+
+    <script>
+        function previewImage() {
+            const fileInput = document.getElementById('fileInput');
+            const uploadedImage = document.getElementById('uploadedImage');
+            const resultImage = document.getElementById('resultImage');
+            const file = fileInput.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    uploadedImage.src = event.target.result;
+                    uploadedImage.style.display = 'block';
+                    // Clear the result image when a new file is selected
+                    resultImage.src = '';
+                    resultImage.style.display = 'none';
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Example function to calculate acne severity based on counts
+        function calculateSeverity(classCounts) {
+            const darkSpotCount = classCounts['Dark spot'] || 0;
+            const whiteheadsCount = classCounts['Whiteheads'] || 0;
+            const blackheadsCount = classCounts['Blackheads'] || 0;
+            let severity = 'Clear';
+
+            if (darkSpotCount > 3 || whiteheadsCount > 3 || blackheadsCount > 5) {
+                severity = 'Moderate Acne';
+            } else if (classCounts['Nodules'] > 3 || classCounts['Papules'] > 3 || classCounts['Pustules'] > 5) {
+                severity = 'Severe Acne';
+            }
+
+            return severity;
+        }
+
+        // Function to show recommendations based on severity
+        function showRecommendations(severity) {
+            const recommendations = {
+            "Clear": "Your skin is clear. Maintain a healthy skincare routine and stay hydrated.",
+            "Moderate Acne": "Use gentle, non-comedogenic moisturizers and avoid harsh ingredients. Consider consulting a dermatologist for personalized advice.",
+            "Severe Acne": "It's important to seek advice from a dermatologist for a tailored treatment plan. Avoid picking at the skin and use gentle cleansing products."
+        };
+
+            document.getElementById('severity-result').textContent = severity;
+            document.getElementById('recommendations').textContent = recommendations[severity];
+        }
+
+        // Assuming `classCounts` is available from the backend or calculated in the frontend
+        const classCounts = {
+            'Blackheads': 2,
+            'Dark spot': 1,
+            'Nodules': 0,
+            'Papules': 0,
+            'Pustules': 0,
+            'Whiteheads': 5
+        };
+
+        // Calculate severity and display recommendations
+        const severity = calculateSeverity(classCounts);
+        showRecommendations(severity);
+
+    </script>
+</body>
+</html>

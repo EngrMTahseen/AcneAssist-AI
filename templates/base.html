@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Healthcare Landing Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/base.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#service">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/nearby_hospitals">Nearby Hospitals</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#testimonials">Testimonials</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about-us">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact">Contact</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="btn btn-custom" href="/logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="home" class="hero-section">
+        <h1>Providing Quality <span style="color: #008080;">Healthcare</span> for a <br> <span style="color: #9BEC00;">Brighter and <span style="color: #008080;">Healthy</span></span> Future</h1>
+        <p>We are dedicated to providing exceptional medical care through innovative solutions and compassionate AI service. Our advanced online medical chatbot answers FAQS about various diseases, their causes, and treatment methods and convenient options to book doctor appointments and locate nearby hospitals, ensuring comprehensive healthcare support for our patients and their families.</p>
+        <div style="margin-top: 60px;">
+            <a href="/appointment" class="btn btn-custom">Appointment</a>
+            <a href="/home" class="btn btn-custom">Acne detection</a>
+        </div>
+    </div>
+
+    <section id="service" class="services">
+    <h2 class="services-title">Dermatological Services We Provide</h2>
+    <p class="services-description"><span style="color: black; font-weight: bold;">Explore our comprehensive range of dermatological services designed to address all your skin care needs.</span></p>
+    <div class="services-container">
+        <div class="service-card">
+            <img src="static/services/1.jpg" alt="Acne treatments">
+            <h3>Acne Treatments</h3>
+            <p>We offer specialized treatments for acne and acne scars, including topical therapies, laser treatments, and more.</p>
+        </div>
+        <div class="service-card">
+            <img src="static/services/2.jpg" alt="Skin cancer screening">
+            <h3>Skin Cancer Screening</h3>
+            <p>Our expert dermatologists perform thorough skin cancer screenings to detect any abnormalities early and ensure prompt treatment.</p>
+        </div>
+        <div class="service-card">
+            <img src="static/services/3.png" alt="Eczema treatments">
+            <h3>Eczema Treatments</h3>
+            <p>We provide effective solutions for managing eczema, including topical creams, lifestyle advice, and advanced therapies.</p>
+        </div>
+        <div class="service-card">
+            <img src="static/services/4.jpg" alt="Rosacea treatments">
+            <h3>Rosacea Treatments</h3>
+            <p>Our treatments for rosacea include personalized skincare regimens, medications, and laser therapies to reduce symptoms.</p>
+        </div>
+        <div class="service-card">
+            <img src="static/services/5.jpg" alt="Psoriasis management">
+            <h3>Psoriasis Management</h3>
+            <p>We offer comprehensive management plans for psoriasis, including topical treatments, phototherapy, and systemic medications.</p>
+        </div>
+        <div class="service-card">
+            <img src="static/services/6.jpg" alt="Anti-aging treatments">
+            <h3>Anti-Aging Treatments</h3>
+            <p>Our anti-aging services include wrinkle reduction, skin rejuvenation, and other cosmetic dermatological treatments to maintain youthful skin.</p>
+        </div>
+    </div>
+</section>
+
+
+    <section id="about-us" class="services">
+        <h2 class="services-title">Meet our team members</h2>
+        <p class="services-description"><span style="color: black; font-weight: bold;">Committed to personalized care and support for every client's unique journey</span></p>
+        <div class="services-container">
+            <div class="service-card">
+                <img src="static/images/1.jpg" alt="Dental treatments">
+                <h3>Usama</h3>
+                <p>Our dental treatments include routine check-ups, cleanings, fillings, and more.</p>
+            </div>
+            <div class="service-card">
+                <img src="static/images/2.jpg" alt="Bones treatments">
+                <h3>ALi</h3>
+                <p>We offer treatments for fractures, osteoporosis, and other bone-related conditions.</p>
+            </div>
+            <div class="service-card">
+                <img src="static/images/3.jpg" alt="Eye care">
+                <h3>Babar</h3>
+                <p>Our eye care services include vision tests, treatments, and surgeries.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials">
+        <h2 class="testimonial-title">What Our Customers Say</h2>
+        <div class="testimonial-container container">
+            <div class="testimonial-box">
+                <div class="star-rating">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                </div>
+                <p class="testimonial-text">The healthcare chatbot offers quick, reliable advice and easy appointment tracking. Highly convenient!</p>
+                <div class="customer-detail">
+                    <div class="customer-photo"><img src="static/images/1.jpg" alt="">Jhon Doe</div>
+                </div>
+            </div>
+            <div class="testimonial-box">
+                <div class="star-rating">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                </div>
+                <p class="testimonial-text">Accurate diagnoses and helpful medication reminders. Great for managing my health.</p>
+                <div class="customer-detail">
+                    <div class="customer-photo"><img src="static/images/2.jpg" alt="">Jay Doe</div>
+                </div>
+            </div>
+            <div class="testimonial-box">
+                <div class="star-rating">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                </div>
+                <p class="testimonial-text">Fantastic for storing health records and providing 24/7 support. Highly recommend!</p>
+                <div class="customer-detail">
+                    <div class="customer-photo"><img src="static/images/3.jpg" alt="">Jolly Doe</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer">
+        <h2>Healthcare Chatbot &copy; All Rights Reserved</h2>
+    </footer>
+
+    <!-- ############## for smooth scrolling ################## -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        // Add smooth scrolling to all links
+        $("a").on('click', function(event) {
+            // Make sure this.hash has a value before overriding default behavior
+            if (this.hash !== "") {
+                // Prevent default anchor click behavior
+                event.preventDefault();
+
+                // Store hash
+                var hash = this.hash;
+
+                // Calculate target offset and current scroll position
+                var targetOffset = $(hash).offset().top;
+                var currentScroll = $(window).scrollTop();
+
+                // Determine the distance to scroll
+                var distance = Math.abs(targetOffset - currentScroll);
+
+                // Use a shorter duration for shorter distances and a longer duration for longer distances
+                var duration = Math.min(distance / 2, 800); // Max duration of 800ms
+
+                // Using jQuery's animate() method to add smooth page scroll
+                $('html, body').animate({
+                    scrollTop: targetOffset
+                }, duration, function(){
+                    // Add hash (#) to URL when done scrolling (default click behavior)
+                    window.location.hash = hash;
+                });
+            }
+        });
+    });
+</script>
+</body>
+</html>

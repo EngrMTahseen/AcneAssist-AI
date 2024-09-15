@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light background color */
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 30px;
+        }
+        h2 {
+            color: #f88c00; /* Orange color for heading */
+            margin-bottom: 20px;
+        }
+        .table {
+            background-color: #fff; /* White background for table */
+            border-radius: 8px; /* Rounded corners for table */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+        }
+        .table thead th {
+            background-color: #343a40; /* Dark background for table header */
+            color: #fff; /* White text for header */
+            text-align: center;
+        }
+        .table tbody tr:nth-child(odd) {
+            background-color: #f2f2f2; /* Alternate row color */
+        }
+        .table tbody tr:hover {
+            background-color: #e9ecef; /* Hover effect */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Admin Dashboard</h2>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Password</th> <!-- Added column for password -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.password }}</td> <!-- Displaying password -->
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
